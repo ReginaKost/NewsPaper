@@ -1,0 +1,504 @@
+NewsPaperDjango) reginakostyagina@MacBook-Pro-Regina NewsPaper % source venv/bin/activate   
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % django help
+zsh: command not found: django
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % pip3 install django
+Collecting django
+  Using cached Django-4.2.2-py3-none-any.whl (8.0 MB)
+Collecting asgiref<4,>=3.6.0
+  Using cached asgiref-3.7.2-py3-none-any.whl (24 kB)
+Collecting sqlparse>=0.3.1
+  Using cached sqlparse-0.4.4-py3-none-any.whl (41 kB)
+Installing collected packages: sqlparse, asgiref, django
+Successfully installed asgiref-3.7.2 django-4.2.2 sqlparse-0.4.4
+
+[notice] A new release of pip available: 22.3 -> 23.1.2
+[notice] To update, run: pip install --upgrade pip
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % ls
+NewsPaper       db.sqlite3      manage.py       newapp          venv
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % python manage.py shell
+Python 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from newapp.models import *
+>>> exit()
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % python manage.py makemigrations
+No changes detected
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newapp, sessions
+Running migrations:
+  No migrations to apply.
+(venv) reginakostyagina@MacBook-Pro-Regina NewsPaper % python manage.py shell  
+Python 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from newapp.models import *
+>>> user1 = User.objects.create(username='Regina', first_name='Kostyagina')
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> user1 = User.objects.create(username='Regina', first_name='Kostyagina')
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> Author.objects.create(authorUser=user1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'user1' is not defined
+>>> user1 = User.objects.create(username='Regina', first_name='Kostyagina')
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> user3 = User.objects.create(username='Anna', first_name='Ivanova')
+>>> Author.objects.create(authorUser=user3)
+<Author: Author object (3)>
+>>> user4 = User.objects.create(username='Ivan', first_name='Ivanov')
+>>> Author.objects.create(authorUser=user4)
+<Author: Author object (4)>
+>>> Category.objects.create(name='Design')
+<Category: Category object (3)>
+>>> Category.objects.create(name='Sport')
+<Category: Category object (4)>
+>>> Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='Anna')), categoryType='Design',title='Design Title', text='Text')
+<Post: Post object (4)>
+>>> Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='Ivan')), categoryType='Sport',title='Sport Title', text='Text')
+<Post: Post object (5)>
+>>> Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='Anna')), categoryType='Sport',title='Sport by Anna Title', text='Text')
+<Post: Post object (6)>
+>>> p1 = Post.objects.get(pk=1)
+>>> p1 = Post.objects.get(pk=1)
+>>> p2 = Post.objects.get(pk=2)
+>>> p3 = Post.objects.get(pk=3)
+>>> p4 = Post.objects.get(pk=4)
+>>> p5 = Post.objects.get(pk=5)
+>>> p6 = Post.objects.get(pk=6)
+>>> c3 = Category.objects.get(name='Design')
+>>> c4 = Category.objects.get(name='Sport')
+>>> p4.postCategoty.add(c3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Post' object has no attribute 'postCategoty'
+>>> p4.postCategory.add(c3)
+>>> p1.postCategory.add(c1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'c1' is not defined
+>>> p5.postCategory.add(c4)
+>>> p6.postCategory.add(c4)
+>>> Comment.objects.create(commentUser=User.objects.get(username='Anna'), commentPost= Post.objects.get(pk=4), text=('comment text1')
+... Comment.objects.create(commentUser=User.objects.get(username='Anna'), commentPost= Post.objects.get(pk=4), text=('comment text1'))
+  File "<console>", line 1
+    Comment.objects.create(commentUser=User.objects.get(username='Anna'), commentPost= Post.objects.get(pk=4), text=('comment text1')
+                          ^
+SyntaxError: '(' was never closed
+>>> Comment.objects.create(commentUser=User.objects.get(username='Anna'), commentPost= Post.objects.get(pk=4), text=('comment text1'))
+<Comment: Anna>
+>>> Comment.objects.create(commentUser=User.objects.get(username='Ivan'), commentPost= Post.objects.get(pk=5), text=('comment text1'))
+<Comment: Ivan>
+>>> Comment.objects.create(commentUser=User.objects.get(username='Ivan'), commentPost= Post.objects.get(pk=6), text=('comment text1'))
+<Comment: Anna>
+>>> Post.objects.get(pk=4).like()
+>>> Post.objects.get(pk=4).like()
+>>> Post.objects.get(pk=4).like()
+>>> Post.objects.get(pk=4).like()
+>>> Post.objects.get(pk=4).like()
+>>> Post.objects.get(pk=5).like()
+>>> Post.objects.get(pk=5).like()
+>>> Post.objects.get(pk=6).like()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Post.objects.get(pk=6).dislike()
+>>> Comment.objects.get(pk=4).like()
+>>> Comment.objects.get(pk=4).like()
+>>> Comment.objects.get(pk=4).like()
+>>> Comment.objects.get(pk=4).like()
+>>> Comment.objects.get(pk=6).dislike()
+>>> 
+>>> Comment.objects.get(pk=6).dislike()
+>>> Author.objects.get(authorUser=User.objects.get(username='Anna')).update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/newapp/models.py", line 12, in update_rating
+    pRat += postRat.get('postRating')
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+>>> author3.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'author3' is not defined
+>>> author3.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'author3' is not defined
+>>> a= Author.objects.get(authorUser = User.objects.get(username='Anna'))
+>>> a.ratingAuthor
+0
+>>> best = Author.objects.all().order_by('-ratingAuthor').values('authorUser','ratingAuthor')[0]
+>>> print(best)
+{'authorUser': 1, 'ratingAuthor': 0}
+>>> Category.objects.create(name='Sport')
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: newapp_category.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: newapp_category.name
+>>> Category.objects.create(name='Tech')
+<Category: Category object (5)>
+>>> Category.objects.create(name='Food')
+<Category: Category object (6)>
+>>> Comment.objects.create(commentUser=User.objects.get(username='Ivan'), commentPost= Post.objects.get(pk=6), text=('comment text1'))
+<Comment: Anna>
+>>> Comment.objects.create(commentUser=User.objects.get(username='Anna'), commentPost= Post.objects.get(pk=4), text=('comment text1'))
+<Comment: Anna>
+>>> Comment.objects.create(commentUser=User.objects.get(username='Ivan'), commentPost= Post.objects.get(pk=5), text=('comment text1'))
+<Comment: Ivan>
+>>> comments = Comment.objects.filter(commentPost=best_article)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'best_article' is not defined
+>>> comments = Comment.objects.filter(commentPost=best)
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'dict'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1480, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1307, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got {'authorUser': 1, 'ratingAuthor': 0}.
+>>> best = Author.objects.all().order_by('-ratingAuthor').values('authorUser','ratingAuthor')[0]
+>>> bestArticle = Post.objects.all().order_by('-rating').values('author','rating','dataCategory','Text')[0]
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2150, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1812, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2449, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2183, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+>>> bestArticle = Post.objects.all().order_by('-rating').values('author','rating','dataCategory','Text')[0]
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2150, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1812, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2449, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2183, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+>>> bestArticle = Post.objects.all().order_by('-rating').values('rating','dataCategory','Text')[0]
+Traceback (most recent call last):
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2150, in add_fields
+    join_info = self.setup_joins(
+                ^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1812, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1308, in _values
+    clone.query.set_values(fields)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2449, in set_values
+    self.add_fields(field_names, True)
+  File "/Users/reginakostyagina/Documents/Skillfactory/Python/B6/NewsPaperDjango/NewsPaper/venv/lib/python3.11/site-packages/django/db/models/sql/query.py", line 2183, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'dataCategory' into field. Choices are: author, author_id, categoryType, comment, dataCreation, id, postCategory, postcategory, rating, text, title
+>>> bestArticle = Post.objects.all().order_by('-rating').values('rating','dataCategory','Text')[0]
