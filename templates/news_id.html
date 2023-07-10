@@ -1,5 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
 {% block content %}
-{{ flatpage.content }}
+<h1>{{ post.title|censor }}</h1>
+<h3>{{ post.dateCreation|date:'d-m-Y H:i' }}</h3>
+<p>{{ post.text|censor }}</p>
 {% endblock content %}
