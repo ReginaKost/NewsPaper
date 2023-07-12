@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %} All news {% endblock title %}
+
+{% block content %}
+<h2>Are you sure?</h2>
+
+<h1>{{ post.title|censor }}</h1>
+<h3>{{ post.dateCreation|date:'d-m-Y H:i' }}</h3>
+<p>{{ post.text|censor }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+{% endblock content %}

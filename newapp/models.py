@@ -31,6 +31,7 @@ class Post(models.Model):
         (NEWS, 'Новость'),
         (ARTICLE, 'Статья'),
     )
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name='Author')
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
     dateCreation = models.DateTimeField(auto_now_add=True)
     postCategory = models.ManyToManyField(Category, through='PostCategory')
@@ -48,6 +49,15 @@ class Post(models.Model):
 
     def preview(self):
         return self.text[0:123] + '...'
+
+    def __str__(self):
+        return f'{self.title} {self.preview()}'
+
+    def preview(self):
+        return self.text[:124] + '...'
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'pk' : self.pk})
 
 class PostCategory(models.Model):
     postThrough = models.ForeignKey(Post, on_delete=models.CASCADE)
