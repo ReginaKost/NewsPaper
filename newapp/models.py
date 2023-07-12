@@ -32,7 +32,7 @@ class Post(models.Model):
         (ARTICLE, 'Статья'),
     )
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
-    dataCreation = models.DateTimeField(auto_now_add=True)
+    dateCreation = models.DateTimeField(auto_now_add=True)
     postCategory = models.ManyToManyField(Category, through='PostCategory')
     title = models.CharField(max_length=128)
     text = models.TextField()
@@ -58,7 +58,7 @@ class Comment(models.Model):
     commentPost = models.ForeignKey(Post, on_delete=models.CASCADE)
     commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
-    dataCreation = models.DateTimeField(auto_now_add=True)
+    dateCreation = models.DateTimeField(auto_now_add=True)
     rating = models.SmallIntegerField(default=0)
 
     def __str__(self):

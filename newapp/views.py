@@ -8,7 +8,7 @@ from datetime import datetime
 class PostList(ListView):
     model = Post
     template_name = 'news.html'
-    context_object_name = 'Posts'
+    context_object_name = 'posts'
     ordering = '-dateCreation'
 
 
@@ -22,4 +22,4 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post  # модель всё та же, но мы хотим получать детали конкретно отдельного товара
     template_name = 'news_id.html'  # название шаблона будет product.html
-    context_object_name = 'Post'  # название объекта
+    context_object_name = 'post'  # название объекта
