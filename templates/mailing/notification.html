@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>New post in category</h2>
+    <p>There is new post {{news.name}} in: {{category}} </p>
+    <a href = "http://127.0.0.1:8000{% url 'new' news.id %}">
+        <h1>{{news.name}}</h1>
+    </a>
+    <p>
+        {{news.description|truncatechars:50}}
+    </p>
+
+
+</body>
+</html>
