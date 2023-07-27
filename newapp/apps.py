@@ -6,3 +6,4 @@ class NewappConfig(AppConfig):
     name = 'newapp'
     def ready(self):
         import newapp.signals
+

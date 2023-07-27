@@ -11,6 +11,7 @@ from django.views.generic import TemplateView
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives # импортируем класс для создание объекта письма с html
 from django.template.loader import render_to_string
+from django.core.cache import cache
 
 
 
@@ -25,6 +26,17 @@ class PostList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
+    def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
+        obj = cache.get(f'post-{self.kwargs["pk"]}',
+                        None)  # кэш очень похож на словарь, и метод get действует также. Он забирает значение по ключу, если его нет, то забирает None.
+
+        # если объекта нет в кэше, то получаем его и записываем в кэш
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'post-{self.kwargs["pk"]}', obj)
+
+        return obj
 
 class PostSearch(ListView):
     model = Post

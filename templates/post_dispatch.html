@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly newsletter </title>
+</head>
+<body>
+  <h2>Hello, {{user_name}}. New articles in your favourite category</h2>
+  <p><a href="http://127.0.0.1:8000{% url 'post_detail' post.id %}">{{post.header}}</a></p>
+  <p>{{post.text|truncatechars:50}}</p>
+</body>
+</html>
